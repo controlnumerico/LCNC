@@ -1,0 +1,11 @@
+#!/bin/sh
+xrandr -o left
+
+for id in $(xinput --list | \
+    sed -n '/Advanced Silicon S.A CoolTouch.*pointer/s/.*=\([0-9]\+\).*/\1/p')
+do
+xinput set-prop $id --type=float "Coordinate Transformation Matrix" 0 -1 1 1 0 0 0 0 1
+done
+
+
+#   sed -n '/ILITEK ILITEK-TP .*pointer/s/.*=\([0-9]\+\).*/\1/p')

@@ -1,0 +1,8 @@
+#!/bin/sh
+xrandr -o normal
+
+for id in $(xinput --list | \
+    sed -n '/ILITEK ILITEK-TP .*pointer/s/.*=\([0-9]\+\).*/\1/p')
+do
+  xinput set-prop $id --type=float "Coordinate Transformation Matrix" 0 0 0 0 0 0 0 0 0
+done
